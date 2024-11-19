@@ -1,0 +1,20 @@
+/usr/bin/sh
+/usr/local/cs/bin/sleep
+/usr/bin/type
+sed
+seq
+/usr/local/cs/emacs-29.4/bin/emacs-29.4
+11.4.1 
+14.2.0
+User
+Add
+Execute
+other users not in the file's group
+Remove
+Write
+Number 7
+411
+libnssckbi.so
+Paste
+C-y
+
