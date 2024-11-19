@@ -1,0 +1,19 @@
+From the readings about git log, we know that git log has the option -S. When using the git log -S "string", can help us find when the very first commit of the string we put right next to it was introduced. It also gives us a log of all the other occurrences of the string if it was modified. 
+
+Thus, to find how the statement "Even newspaper reports present contradictory information.", I used the following:
+
+git log -S "Even newspaper reports present contradictory information."
+
+I got the following result:
+
+commit c12b432741eed9a422fbf99fa27af6e7a941d88b
+Author: Arthur David Olson <ado@elsie>
+Date:   Thu Dec 21 11:43:42 1995 -0500
+
+    Eggert changes
+    
+    SCCS-file: northamerica
+    SCCS-SID: 7.20
+
+This tells us that, the statement above was introduced to tzdb on the c12b432741eed9a422fbf99fa27af6e7a941d88b commit
+on December 21. 

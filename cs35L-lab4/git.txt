@@ -1,0 +1,14 @@
+When doing git branch within the repository we cloned, the resulting output is:
+
+* master
+
+When doing git branch within the repository ~eggert/src/github/git, the resulting output is:
+
+  maint
+* master
+  next
+  seen
+  todo
+
+This means that ~eggert/src/github/git has more branches than the clone of git's own repository. 
+In our clone of git's own repo, it only has one branch and that is the master branch.
