@@ -1,0 +1,76 @@
+Coco Li
+UID:: 905917242
+
+1) Computing 2**(607 - 1) * (2**607 - 1) command
+
+   A: (* (expt 2 (- 607 1)) (- (expt 2 607) 1))
+      141053783706712069063207958086063189881486743514715667838838675999954867742652380114104193329037690251561950568709829327164087724366370087116731268159313652487450652439805877296207297446723295166658228846926807786652870188920867879451478364569313922060370695064736073572378695176473055266826253284886383715072974324463835300053138429460296575143368065570759537328128
+
+2) Use Emacs to determine how many bits it would take to represent this number in base-2 notation (not counting any sign bit), by writing a Lisp expression that yields the number of bits as an integer.
+
+   A: log (number base)
+      log (* (expt 2 (- 607 1)) (- (expt 2 607) 1)) 2  will result in overflow,so we need to split this up
+      step 1 - Recall: log (ab) = log (a) + log b) --> log (expt 2 (- 607 1)) 2 + log ((- (expt 2 607) 1)) 2
+      step 2 - Recall: log (expt a b) a = b
+      	   --> log (expt 2 (- 607 1) --> 606
+	   --> log ((- (expt 2 607) 1)) --> 607
+      step 3 - 606 + 607 = 1213
+     Result - 1213 bits (Don't need to account for significant bit)
+
+3) Type C-h k C-h k and describe what happens and why.
+
+   A: C-h k C-h k gives us the description of what C-h k does. C-h k runs the describe-key, which tells us what the key we inputted does. So, when using the command C-h k C-h k this gives us the description of what C-h k does, because we asked to describe the key C-h k. We see this key listed when we run C-h b as well.
+
+4) Type C-h k M-SPC and describe what happens and why. 
+
+   A: C-h k M-SPC gives us the description of what M-SPC does. This happens because C-h k runs the describe-key and we inputted M-SPC. M-SPC runs a command cycle-spacing. It manipulates white space around where our cursor sits.
+
+5) Describe how you execute the general M-SPC function.
+
+   A: To execute the general M-SPC function, I created a new file with text and major spaces between each word. I also left one space between two words. Once I had this file, I moved my cursor to the spaces and ran M-SPC. This reduced the amount of execessive white spaces between the words, leaving only one white space between each word. For the one white space between two words, when I ran M-SPC, it did not do anything, because there was no excessive white space between those two words initially.
+
+6) Describe what happens when randline.py is invoked on a non-empty file and why.
+
+   A: On a nonempty file, randline.py provides us with a random line from our file. In the code for randline.py,the script reads a file and uses the random library to randomly choose a line within a file. Within the main section of the script, the code allows the user to also include the amount of random lines the user wants. If the amount is a negative number, an error is shown.
+
+7) Describe what happens when randline.py is invoked on an empty file like, /dev/null, and why.
+
+   A: When invoking randline.py on an empty file such as /dev/null, I get an error messgage saying "IndexError: Cannot choose from an empty sequence." The reason for this is that in our main of randline.py, the default number of lines randline.py should output is 1. Since, there are no lines in an empty file, we get an error message because our script needs at least 1 line in the file to give the use an output.
+
+8) Describe what happens when you use Python 3 to run randline_old.py(which was written for Python 2) and why.
+
+   A: When trying to use Python 3 to run randline_old.py, I get a syntax error message since the syntax in Python 2 and Python 3 now differ. The problem is coming from "except IOError as (errno, strerror):" which is syntatically incorrect for Python 3. In Python 3, we need to attribute IOError to a single object instead of multiple variables.
+
+9)  Your benchmark results, including
+
+    a. Benchmark results
+
+      Python 3:
+	     1) real: 0m0.898s, sys: 0m0.069s
+	     2) real: 0m0.897s, sys: 0m0.080s
+	     3) real: 0m0.919s, sys: 0m0.074s
+	     
+	     Median: real: 0m0.898s, sys: 0.074s
+
+	   Python 3.11:
+             1) real: 0m0.833s,	sys: 0m0.070s
+             2)	real: 0m0.830s,   sys: 0m0.066s
+             3)	real: 0m0.805s,	sys: 0m0.075s
+
+	     Median: real: 0m0.830s, sys: 0m0.066s
+
+	   CoreUtils:
+             1)	real: 0m0.083s,	sys: 0m0.011s
+             2)	real: 0m0.085s, sys: 0m0.014s
+             3)	real: 0m0.078s,	sys: 0m0.010s
+
+	     Median: real: 0m0.083s, 0m0.011s
+
+    b. CPU and OS version
+
+       CPU Version: Intel(R) Xeon(R) Silver 4116 CPU @ 2.10GHz
+       OS Version: 9.4 (Plow)
+
+    c. What features of Python 3.11 your code is relying on that makes it not run on /usr/bin/python3 (If applicable)
+
+       Not Applicable
